@@ -1,0 +1,29 @@
+/* Custom CSS for scheduling page */
+.text-xxs {
+    font-size: 0.65rem;
+    line-height: 0.9rem;
+}
+
+/* Make the tables more compact */
+.timetable-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* Table styles for consistent column widths */
+table.table-fixed {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* Ensure table cells handle content overflow properly */
+table.table-fixed td {
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+/* Consistent cell styling */
+table.table-fixed th,
+table.table-fixed td {
+    width: auto;
+} 

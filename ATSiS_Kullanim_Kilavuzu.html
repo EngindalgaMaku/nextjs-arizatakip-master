@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATSİS - Arıza Takip Sistemi Kullanım Kılavuzu</title>
+    <style>
+        :root {
+            --primary-color: #4338CA;
+            --primary-light: #E0E7FF;
+            --secondary-color: #3B82F6;
+            --text-color: #1F2937;
+            --text-light: #6B7280;
+            --background-light: #F9FAFB;
+            --border-color: #E5E7EB;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #4338CA 0%, #3B82F6 100%);
+            color: white;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo {
+            max-width: 100px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-top: 0;
+        }
+        
+        .school-title {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        h2 {
+            color: #4338CA;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E0E7FF;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            color: #3B82F6;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            color: #16a085;
+        }
+        
+        ul, ol {
+            margin-bottom: 20px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 15px 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .image-placeholder {
+            background-color: #f5f5f5;
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin: 15px 0;
+            color: #777;
+        }
+        
+        .note {
+            font-style: italic;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #4338CA 0%, #3B82F6 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .school-info {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .developers {
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        .switch-panel {
+            background-color: #eaf3fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .switch-link {
+            color: #2980b9;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .switch-link:hover {
+            text-decoration: underline;
+        }
+        
+        .new-feature {
+            background-color: #e8f8f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .new-feature h4 {
+            color: #e74c3c;
+            margin-top: 0;
+        }
+        
+        /* Gelecek özellikler için stil */
+        .future-feature {
+            background-color: #f0fff4;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #38b2ac;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        
+        .future-feature h4 {
+            color: #2c7a7b;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+        
+        .future-feature ul {
+            padding-left: 20px;
+        }
+        
+        .future-feature li {
+            margin-bottom: 8px;
+        }
+        
+        .toc {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Sayfa içi navigasyon için düzgün kaydırma ayarı */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Link tıklandığında hedef için offset ayarı */
+        :target {
+            scroll-margin-top: 20px;
+        }
+        
+        /* Öğretmen giriş bölümü için özel stiller */
+        #ogretmen-giris {
+            scroll-margin-top: 30px;
+            padding-top: 15px;
+        }
+        
+        /* Form benzeri liste öğelerini daha düzenli gösterme */
+        #ogretmen-giris + ol {
+            padding-left: 25px;
+        }
+        
+        #ogretmen-giris + ol li {
+            margin-bottom: 10px;
+        }
+        
+        /* Ek panel boşlukları */
+        .switch-panel {
+            margin: 20px 0;
+            clear: both;
+        }
+        
+        /* Görsel yerleşimi düzeltme */
+        .image-placeholder {
+            clear: both;
+            margin: 20px 0;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Gerçek ekran görüntüsü görselleri için stil */
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            display: block;
+            width: 40%; /* Resmi %40 oranında gösteriyorum */
+            margin-left: auto; /* Merkezde görüntülenecek */
+            margin-right: auto;
+        }
+        
+        /* Daha büyük gösterilecek ekran görüntüleri için stil */
+        .screenshot-large {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            display: block;
+            width: 80%; /* Daha büyük gösterim için %80 genişlik */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Sistem bağlantısı için stil */
+        .system-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .system-link:hover {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--secondary-color);
+        }
+        
+        /* Teşekkür notu için stil */
+        .appreciation-note {
+            background-color: #f0f7ff;
+            border-left: 4px solid #4286f4;
+            padding: 16px 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .appreciation-note h4 {
+            color: #2c5baa;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .appreciation-note p {
+            margin-bottom: 0;
+            font-style: italic;
+            color: #3a4a64;
+            line-height: 1.7;
+        }
+        
+        @media print {
+            header, .footer {
+                background: none !important;
+                color: black !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .container {
+                max-width: 100% !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/okullogo.png" alt="Hüsniye Özdilek Ticaret M.T.A.L. Logo" class="logo">
+            </div>
+            <h1>ATSİS</h1>
+            <p class="subtitle">Arıza Takip Sistemi Kullanım Kılavuzu</p>
+            <p class="school-title">HÜSNİYE ÖZDİLEK TİCARET M.T.A.L.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="toc">
+            <h2>İçindekiler</h2>
+            <ol>
+                <li><a href="#giris">Giriş</a>
+                    <ol type="a">
+                        <li><a href="#otomatik-giris">Otomatik Giriş Sistemi</a></li>
+                    </ol>
+                </li>
+                <li><a href="#ogretmen">Öğretmen Paneli Kullanımı</a>
+                    <ol type="a">
+                        <li><a href="#ogretmen-giris">Giriş Yapma</a></li>
+                        <li><a href="#ariza-bildirim">Arıza Bildirimi Oluşturma</a></li>
+                        <li><a href="#ariza-goruntuleme">Arıza Kayıtlarını Görüntüleme</a></li>
+                        <li><a href="#profil">Profil Yönetimi</a></li>
+                        <li><a href="#ogretmen-yonetici-gecis">Yönetici Paneline Geçiş</a></li>
+                    </ol>
+                </li>
+                <li><a href="#yonetici">Yönetici Paneli Kullanımı</a>
+                    <ol type="a">
+                        <li><a href="#yonetici-giris">Giriş Yapma</a></li>
+                        <li><a href="#dashboard">Genel Bakış (Dashboard)</a></li>
+                        <li><a href="#ariza-yonetimi">Arıza Kayıtları Yönetimi</a></li>
+                        <li><a href="#kullanici-yonetimi">Kullanıcı Yönetimi</a></li>
+                        <li><a href="#raporlar">Raporlar</a></li>
+                        <li><a href="#ayarlar">Ayarlar</a></li>
+                        <li><a href="#yonetici-ogretmen-gecis">Öğretmen Paneline Geçiş</a></li>
+                    </ol>
+                </li>
+                <li><a href="#gelecek-planlar">Gelecek Planları ve Geliştirmeler</a>
+                    <ol type="a">
+                        <li><a href="#yapay-zeka">Yapay Zeka Entegrasyonu</a></li>
+                        <li><a href="#mobil-uygulama">Mobil Uygulama</a></li>
+                        <li><a href="#entegrasyonlar">Diğer Sistemlerle Entegrasyonlar</a></li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+
+        <h2 id="giris">1. Giriş</h2>
+        <p>
+            ATSİS (Arıza Takip Sistemi), okullardaki cihaz arızalarının bildirilmesini ve takibini kolaylaştıran, bildirimden çözüme kadar tüm süreci dijitalleştiren, modern ve kullanıcı dostu bir web uygulamasıdır. Eğitim kurumlarının teknolojik altyapısında meydana gelen sorunların hızlı ve etkili bir şekilde çözülmesini sağlamak amacıyla tasarlanmıştır.
+        </p>
+        <p>
+            Sisteme erişmek için web tarayıcınızdan <a href="https://atsis.husniyeozdilek.k12.tr/" target="_blank" class="system-link">https://atsis.husniyeozdilek.k12.tr/</a> adresini ziyaret edebilirsiniz.
+        </p>
+        
+        <div class="appreciation-note">
+            <h4>Teşekkür ve Takdir</h4>
+            <p>Bu sistem, Hüsniye Özdilek Ticaret M.T.A.L. Bilişim Alanı öğretmenlerinin özverili çalışmaları ve teknik becerileri sayesinde geliştirilmiştir. Teknik altyapının kurulması, kodlama süreçleri ve kullanıcı deneyiminin optimizasyonu konularında gösterdikleri üstün gayret ve profesyonel yaklaşım, ATSİS'in eğitim kurumlarına değer katan bir çözüm olmasını sağlamıştır. Bilişim teknolojilerinin eğitim süreçlerine entegrasyonu konusunda gösterdikleri bu başarılı çalışma örneği için kendilerine teşekkür ederiz.</p>
+        </div>
+        
+        <p>
+            Uygulama, teknik servis süreçlerini optimize ederek zaman ve kaynak tasarrufu sağlar. Bu sistem sayesinde, arıza bildirimleri standartlaştırılmış, bildirim süreci kolaylaştırılmış ve takip süreci şeffaflaştırılmıştır. ATSİS, özellikle akıllı tahta, bilgisayar, yazıcı ve projektör gibi eğitimde sıklıkla kullanılan cihazların arızalarının raporlanması, atanması, durumunun izlenmesi ve çözüm sürecinin belgelenmesi için geliştirilmiş kapsamlı bir çözümdür.
+        </p>
+        <p>
+            ATSİS'in temel özellikleri arasında:
+        </p>
+        <ul>
+            <li><strong>Kolay arıza bildirimi:</strong> Öğretmenler, minimum adımla hızlıca arıza bildirebilir</li>
+            <li><strong>Gerçek zamanlı bildirimler:</strong> Yeni arıza bildirimleri ve durum güncellemeleri anında ilgili kişilere iletilir</li>
+            <li><strong>Detaylı raporlama:</strong> Arıza türleri, lokasyonlar ve çözüm süreleri hakkında kapsamlı istatistikler sunulur</li>
+            <li><strong>İstatistiksel analiz:</strong> En sık arızalanan cihazlar, ortalama çözüm süreleri ve diğer önemli göstergeler hakkında veriler sunar</li>
+            <li><strong>Duyarlı tasarım:</strong> Tüm cihazlarda (masaüstü, tablet, telefon) sorunsuz çalışır</li>
+            <li><strong>Otomatik giriş:</strong> Güvenli cihazlarda kullanıcıların tekrar kimlik doğrulaması yapmadan sisteme erişimini sağlar</li>
+        </ul>
+        <p>
+            Sistem iki ana kullanıcı tipi için tasarlanmıştır:
+        </p>
+        <ul>
+            <li><strong>Öğretmen:</strong> Arıza bildirimi oluşturur ve kendi oluşturduğu arıza kayıtlarını takip eder.</li>
+            <li><strong>Yönetici:</strong> Tüm arıza kayıtlarını görüntüler, düzenler, atar ve yönetir. Kullanıcı yönetimi yapar ve sistem ayarlarını değiştirebilir.</li>
+        </ul>
+        <p>Bu kılavuz, her iki kullanıcı tipi için sistemin nasıl kullanılacağını adım adım açıklamaktadır.</p>
+
+        <h3 id="otomatik-giris">1.a. Otomatik Giriş Sistemi</h3>
+        <div class="new-feature">
+            <h4>Yeni Özellik: Akıllı Giriş Sistemi</h4>
+            <p>ATSİS artık daha akıllı bir giriş sistemine sahip. Sisteme giriş yapmanız durumunda:</p>
+            <ol>
+                <li>Tarayıcınızda oturum bilgileriniz güvenli bir şekilde saklanır.</li>
+                <li>Aynı cihazdan yeniden erişim sağladığınızda, sistem cihazınızdaki bilgileri kontrol eder.</li>
+                <li>Daha önce yönetici olarak giriş yapmışsanız, doğrudan yönetici paneline yönlendirilirsiniz.</li>
+                <li>Daha önce öğretmen olarak giriş yapmışsanız, doğrudan öğretmen paneline yönlendirilirsiniz.</li>
+                <li>Giriş ekranını görmeden, doğrudan ilgili arayüzü kullanmaya başlayabilirsiniz.</li>
+            </ol>
+            <p>Bu sayede her seferinde kullanıcı adı ve şifrenizi girmenize gerek kalmaz. Güvenliğiniz için, belirli bir süre kullanmadığınızda sistem otomatik olarak çıkış yapar.</p>
+            <p><strong>Not:</strong> Farklı bir hesap ile giriş yapmak isterseniz, önce sağ üst köşedeki profil menüsünden "Çıkış Yap" seçeneğini kullanmalısınız.</p>
+        </div>
+
+        <h2 id="ogretmen">2. Öğretmen Paneli Kullanımı</h2>
+
+        <h3 id="ogretmen-giris">2.a. Giriş Yapma</h3>
+        <div class="login-section">
+            <ol>
+                <li>Web tarayıcınızı açın ve ATSİS web adresine gidin.</li>
+                <li>Daha önce öğretmen hesabıyla giriş yapmışsanız, sistem sizi otomatik olarak tanıyacak ve doğrudan öğretmen paneline yönlendirecektir.</li>
+                <li>İlk kez giriş yapıyorsanız veya hesap değiştirmek istiyorsanız, "Öğretmen Girişi" butonuna tıklayın.</li>
+                <li>Adınızı ve yöneticiden aldığınız erişim kodunu girin.</li>
+                <li>"Giriş Yap" butonuna tıklayın.</li>
+                <li>"Bu cihazda beni hatırla" seçeneğini işaretleyerek bir sonraki ziyaretinizde otomatik olarak giriş yapabilirsiniz.</li>
+            </ol>
+            <img src="images/ogretmen_giris.jpg" alt="Öğretmen giriş ekranı" class="screenshot">
+        </div>
+
+        <div class="switch-panel" id="ogretmen-yonetici-gecis">
+            <p><strong>Yönetici Paneline Geçiş:</strong> Öğretmen panelinde sağ üst köşede yer alan profil menüsünden <a href="#" class="switch-link">"Yönetici Paneline Geç"</a> seçeneğine tıklayarak (gerekli yönetici yetkileriniz varsa) yönetici arayüzüne geçiş yapabilirsiniz.</p>
+        </div>
+
+        <h3 id="ariza-bildirim">2.b. Arıza Bildirimi Oluşturma</h3>
+        <ol>
+            <li>Giriş yaptıktan sonra "Arıza Bildir" butonuna tıklayın.</li>
+            <li>Açılan formda arıza ile ilgili bilgileri doldurun:
+                <ul>
+                    <li>Cihaz türü</li>
+                    <li>Cihaz adı</li>
+                    <li>Konum</li>
+                    <li>Oda numarası</li>
+                    <li>Arıza açıklaması</li>
+                </ul>
+            </li>
+            <li>"Gönder" butonuna tıklayarak arıza bildirimini oluşturun.</li>
+        </ol>
+        <img src="images/ogretmen_ariza_kayit.jpg" alt="Arıza bildirimi ekranı" class="screenshot">
+
+        <h3 id="ariza-goruntuleme">2.c. Arıza Kayıtlarını Görüntüleme</h3>
+        <ol>
+            <li>Ana ekranda kendi oluşturduğunuz arıza kayıtlarını görebilirsiniz.</li>
+            <li>Her arıza kaydının durumunu, oluşturulma tarihini ve detaylarını görebilirsiniz.</li>
+            <li>Arıza kaydının yanındaki "Göz" ikonuna tıklayarak detayları görüntüleyebilirsiniz.</li>
+        </ol>
+        <img src="images/ogretmen_ariza_takip.jpg" alt="Öğretmen arıza takip ekranı" class="screenshot">
+
+        <h3 id="profil">2.d. Profil Yönetimi</h3>
+        <ol>
+            <li>"Çıkış Yap" seçeneği ile sistemden çıkış yapabilirsiniz.</li>
+        </ol>
+
+        <h2 id="yonetici">3. Yönetici Paneli Kullanımı</h2>
+
+        <h3 id="yonetici-giris">3.a. Giriş Yapma</h3>
+        <ol>
+            <li>Web tarayıcınızı açın ve ATSİS web adresine gidin.</li>
+            <li>Daha önce yönetici hesabıyla giriş yapmışsanız, sistem sizi otomatik olarak tanıyacak ve doğrudan yönetici paneline yönlendirecektir.</li>
+            <li>İlk kez giriş yapıyorsanız veya farklı bir hesapla giriş yapmak istiyorsanız, karşınıza gelen giriş ekranında e-posta adresinizi ve şifrenizi girin.</li>
+            <li>"Giriş Yap" butonuna tıklayın.</li>
+            <li>"Bu cihazda otomatik giriş yap" seçeneği varsayılan olarak işaretlidir. Bu sayede bir sonraki ziyaretinizde otomatik olarak giriş yapabilirsiniz.</li>
+        </ol>
+        <img src="images/yonetici_giris_ekrani.jpg" alt="Yönetici giriş ekranı" class="screenshot">
+
+        <h3 id="dashboard">3.b. Genel Bakış (Dashboard)</h3>
+        <p>Giriş yaptıktan sonra yönetici dashboard'u ile karşılaşacaksınız. Bu ekranda:</p>
+        <ul>
+            <li>Toplam arıza sayısı</li>
+            <li>Açık arıza sayısı</li>
+            <li>Çözülen arıza sayısı</li>
+            <li>Son arıza bildirimleri</li>
+            <li>Arıza durumlarını gösteren grafikler</li>
+        </ul>
+        <p>gibi bilgiler yer alır.</p>
+        
+        <div class="switch-panel" id="yonetici-ogretmen-gecis">
+            <p><strong>Öğretmen Paneline Geçiş:</strong> Sağ üst köşede yer alan profil menüsünden <a href="#" class="switch-link">"Öğretmen Moduna Geç"</a> seçeneğine tıklayarak öğretmen arayüzüne geçiş yapabilirsiniz. Bu seçenek profil menüsünde "Profil" ve "Ayarlar" seçenekleri arasında yer almaktadır. Bu sayede öğretmenlerin sistemdeki deneyimini görebilir, test edebilir ve arıza bildirimlerini öğretmen bakış açısıyla inceleyebilirsiniz.</p>
+        </div>
+        
+        <img src="images/yonetici_dashboard.jpg" alt="Yönetici dashboard ekranı" class="screenshot-large">
+
+        <h3 id="ariza-yonetimi">3.c. Arıza Kayıtları Yönetimi</h3>
+        <ol>
+            <li>Sol menüden "Arızalar" sekmesine tıklayın.</li>
+            <li>Bu ekranda tüm arıza kayıtlarını görebilirsiniz.</li>
+            <li>Arama kutusu ve filtreler ile kayıtlar arasında arama yapabilirsiniz.</li>
+            <li>Her arıza kaydının sağındaki düğmeler ile kayıtları görüntüleyebilir, düzenleyebilir veya silebilirsiniz.</li>
+        </ol>
+        <img src="images/yonetici_ariza_listesi.jpg" alt="Yönetici arıza listesi ekranı" class="screenshot-large">
+
+        <h4>Arıza Kaydı Görüntüleme</h4>
+        <ol>
+            <li>Görüntülemek istediğiniz arızanın yanındaki "Göz" ikonuna tıklayın.</li>
+            <li>Açılan pencerede arıza ile ilgili tüm detayları görebilirsiniz.</li>
+        </ol>
+        <img src="images/yonetici_ariza_kaydi_goruntule.jpg" alt="Arıza kaydı görüntüleme ekranı" class="screenshot">
+
+        <h4>Arıza Kaydı Düzenleme</h4>
+        <ol>
+            <li>Düzenlemek istediğiniz arızanın detay penceresinde "Düzenle" butonuna tıklayın.</li>
+            <li>Açılan formda arıza bilgilerini güncelleyin.</li>
+            <li>"Kaydet" butonuna tıklayarak değişiklikleri kaydedin.</li>
+        </ol>
+        <img src="images/yonetici_ariza_kaydi_duzenleme.jpg" alt="Arıza kaydı düzenleme ekranı" class="screenshot">
+
+        <h4>Yeni Arıza Kaydı Oluşturma</h4>
+        <ol>
+            <li>Arızalar sayfasında "Arıza Ekle" butonuna tıklayın.</li>
+            <li>Açılan formda gerekli bilgileri doldurun.</li>
+            <li>"Kaydet" butonuna tıklayarak yeni arıza kaydını oluşturun.</li>
+        </ol>
+        <img src="images/yonetici_yeni_ariza_ekleme.jpg" alt="Yönetici yeni arıza ekleme ekranı" class="screenshot">
+
+        <h3 id="kullanici-yonetimi">3.d. Kullanıcı Yönetimi</h3>
+        <ol>
+            <li>Sol menüden "Kullanıcılar" sekmesine tıklayın.</li>
+            <li>Bu ekranda tüm kullanıcıları görebilirsiniz.</li>
+            <li>"Kullanıcı Ekle" butonu ile yeni kullanıcı ekleyebilirsiniz.</li>
+            <li>Mevcut kullanıcıları düzenleyebilir veya silebilirsiniz.</li>
+        </ol>
+        <img src="images/yonetici_kullanici_listesi.jpg" alt="Yönetici kullanıcı listesi ekranı" class="screenshot-large">
+
+        <h3 id="raporlar">3.e. Raporlar</h3>
+        <ol>
+            <li>Sol menüden "Raporlar" sekmesine tıklayın.</li>
+            <li>Bu ekranda çeşitli raporları görebilirsiniz.</li>
+            <li>Tarih aralığı seçerek filtreleme yapabilirsiniz.</li>
+            <li>Raporları PDF olarak indirebilirsiniz.</li>
+        </ol>
+        <img src="images/yonetici_raporlar.jpg" alt="Yönetici raporlar ekranı" class="screenshot-large">
+
+        <h3 id="ayarlar">3.f. Ayarlar</h3>
+        <ol>
+            <li>Sol menüden "Ayarlar" sekmesine tıklayın.</li>
+            <li>Bu ekranda sistem ayarlarını yapabilirsiniz.</li>
+            <li>Öğretmen erişim kodunu değiştirebilirsiniz.</li>
+        </ol>
+        <img src="images/yonetici_ayarlar.jpg" alt="Yönetici ayarlar ekranı" class="screenshot-large">
+
+        <h2 id="gelecek-planlar">4. Gelecek Planları ve Geliştirmeler</h2>
+        <p>ATSİS sürekli gelişmeye devam eden bir projedir. Gelecekte planladığımız yenilikler ve iyileştirmeler şunlardır:</p>
+
+        <h3 id="yapay-zeka">4.a. Yapay Zeka Entegrasyonu</h3>
+        <div class="future-feature">
+            <h4>Yapay Zeka Destekli Arıza Tanılama ve Çözüm Önerileri</h4>
+            <p>Gelecek güncellemelerimizde, ATSİS'e yapay zeka yetenekleri entegre edilecektir. Bu sayede:</p>
+            <ul>
+                <li><strong>Otomatik Arıza Tanılama:</strong> Bildirimi yapılan arızaların tanımlarına göre otomatik kategorilendirme ve öncelik belirlemesi yapılabilecektir.</li>
+                <li><strong>Çözüm Önerileri:</strong> Benzer arızaların geçmiş çözüm yöntemlerini analiz ederek, teknik personele çözüm önerileri sunulacaktır.</li>
+                <li><strong>Arıza Tahmini:</strong> Cihazların arıza geçmişlerini analiz ederek potansiyel arızaların önceden tespit edilmesi ve önleyici bakım planlanması sağlanacaktır.</li>
+                <li><strong>Doğal Dil İşleme:</strong> Öğretmenlerin arıza tanımlarını analiz ederek daha detaylı teknik bilgiler çıkarılması sağlanacaktır.</li>
+                <li><strong>Akıllı Dağıtım:</strong> Yapay zeka algoritmaları kullanılarak, arızaların en uygun teknik personele otomatik atanması gerçekleştirilecektir.</li>
+            </ul>
+            <p>Yapay zeka entegrasyonu sayesinde, arıza bildirimlerinin daha hızlı çözülmesi, tekrar eden sorunların önlenmesi ve sistem verimliliğinin artırılması hedeflenmektedir.</p>
+        </div>
+
+        <h3 id="mobil-uygulama">4.b. Mobil Uygulama</h3>
+        <p>ATSİS için hem Android hem de iOS platformları için yerel mobil uygulamalar geliştirme çalışmalarımız devam etmektedir. Bu sayede:</p>
+        <ul>
+            <li>Bildirim oluşturmak için QR kod tarama özelliği</li>
+            <li>Gerçek zamanlı bildirimler</li>
+            <li>Arıza fotoğraflarını doğrudan çekip ekleyebilme</li>
+            <li>Çevrimdışı modda çalışabilme yeteneği</li>
+        </ul>
+        <p>özellikleri kullanıcılarımıza sunulacaktır.</p>
+
+        <h3 id="entegrasyonlar">4.c. Diğer Sistemlerle Entegrasyonlar</h3>
+        <p>Okul yönetim sistemleri, envanter takip yazılımları ve e-okul gibi diğer sistemlerle entegrasyon sağlanarak, ATSİS'in daha kapsamlı bir okul yönetim ekosisteminin parçası haline getirilmesi planlanmaktadır.</p>
+
+        <h2>Sonuç</h2>
+        <p>Bu kılavuzda ATSİS'in temel kullanımı anlatılmıştır. Sistem kullanımı ile ilgili sorularınız için lütfen sistem yöneticinize başvurun.</p>
+
+        <div class="note">
+            <p>Not: Ekran görüntüleri uygulamanın çalışır hali ile güncellenerek eklenecektir</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="school-info">
+            Hüsniye Özdilek Ticaret M.T.A.L.
+        </div>
+        <div class="copyright">
+            &copy; 2024-2025 ATSİS - Arıza Takip Sistemi. Tüm hakları saklıdır.
+        </div>
+        <div class="developers">
+            <p>Proje Geliştiricileri:</p>
+            <p>Hüsniye Özdilek Ticaret M.T.A.L. Bilişim Alanı</p>
+        </div>
+    </footer>
+</body>
+</html> 
